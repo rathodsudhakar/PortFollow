@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Neon Terminal (Default) */
+  --color-desktop-bg: #080C16;
+  --color-window-bg: #101827;
+  --color-card-bg: #1B2A41;
+  --color-border: #223552;
+  --color-accent-primary: #00E5FF;
+  --color-accent-secondary: #3B82F6;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-magenta: #FF2E93;
+  --color-terminal-green: #39FF14;
+  --color-accent-gold: #FFC857;
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-taskbar-bg: rgba(16, 24, 39, 0.88);
+  --color-titlebar-active: #1B2A41;
+  --color-titlebar-active-text: #00E5FF;
+  --color-titlebar-inactive: #0D1424;
+  --color-titlebar-inactive-text: #64748B;
+  --color-btn-surface: #1E293B;
+  --window-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(0, 229, 255, 0.25);
+  --window-radius: 10px;
+  --window-border-width: 1px;
+}
+
+[data-theme="neon"] {
+  --color-desktop-bg: #080C16;
+  --color-window-bg: #101827;
+  --color-card-bg: #1B2A41;
+  --color-border: #223552;
+  --color-accent-primary: #00E5FF;
+  --color-accent-secondary: #3B82F6;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-magenta: #FF2E93;
+  --color-terminal-green: #39FF14;
+  --color-accent-gold: #FFC857;
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-taskbar-bg: rgba(16, 24, 39, 0.88);
+  --color-titlebar-active: #1B2A41;
+  --color-titlebar-active-text: #00E5FF;
+  --color-titlebar-inactive: #0D1424;
+  --color-titlebar-inactive-text: #64748B;
+  --color-btn-surface: #1E293B;
+  --window-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(0, 229, 255, 0.25);
+  --window-radius: 10px;
+  --window-border-width: 1px;
+}
+
+[data-theme="pastel"] {
+  --color-desktop-bg: #F8F5FF;
+  --color-window-bg: #FFFFFF;
+  --color-card-bg: #F3F0FA;
+  --color-border: #E5E7EB;
+  --color-accent-primary: #8B5CF6;
+  --color-accent-secondary: #F472B6;
+  --color-accent-purple: #7C3AED;
+  --color-accent-magenta: #EC4899;
+  --color-terminal-green: #10B981;
+  --color-accent-gold: #F59E0B;
+  --color-text-main: #1F2937;
+  --color-text-muted: #6B7280;
+  --color-taskbar-bg: rgba(255, 255, 255, 0.92);
+  --color-titlebar-active: #8B5CF6;
+  --color-titlebar-active-text: #FFFFFF;
+  --color-titlebar-inactive: #EDE9FE;
+  --color-titlebar-inactive-text: #6B7280;
+  --color-btn-surface: #EDE9FE;
+  --window-shadow: 0 20px 45px -10px rgba(139, 92, 246, 0.2), 0 0 0 1px rgba(139, 92, 246, 0.12);
+  --window-radius: 12px;
+  --window-border-width: 1px;
+}
+
+[data-theme="classic"] {
+  --color-desktop-bg: #008080;
+  --color-window-bg: #C0C0C0;
+  --color-card-bg: #D4D0C8;
+  --color-border: #808080;
+  --color-accent-primary: #000080;
+  --color-accent-secondary: #1084d0;
+  --color-accent-purple: #4B0082;
+  --color-accent-magenta: #800080;
+  --color-terminal-green: #008000;
+  --color-accent-gold: #808000;
+  --color-text-main: #000000;
+  --color-text-muted: #333333;
+  --color-taskbar-bg: #C0C0C0;
+  --color-titlebar-active: #000080;
+  --color-titlebar-active-text: #FFFFFF;
+  --color-titlebar-inactive: #808080;
+  --color-titlebar-inactive-text: #C0C0C0;
+  --color-btn-surface: #D4D0C8;
+  --window-shadow: 2px 2px 0px #000000, -1px -1px 0px #ffffff;
+  --window-radius: 2px;
+  --window-border-width: 2px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* Classic theme Win98 bevel styles */
+[data-theme="classic"] .win98-box-outset {
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  box-shadow: inset 1px 1px 0px #dfdfdf, inset -1px -1px 0px #000000;
+}
+
+[data-theme="classic"] .win98-box-inset {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  box-shadow: inset 1px 1px 0px #000000, inset -1px -1px 0px #dfdfdf;
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Prevent unwanted browser text drag while dragging windows */
+.window-dragging {
+  user-select: none;
+  cursor: grabbing !important;
+}
+
+/* Subtle CRT scanline effect (only in neon theme) */
+.crt-overlay {
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 99;
+}

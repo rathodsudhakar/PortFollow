@@ -1,0 +1,65 @@
+================================================================================
+                              SUDHAKAR RATHOD
+           Computer Science Student | Software Developer | Cybersecurity Enthusiast
+================================================================================
+GitHub:    https://github.com/rathodsudhakar
+Portfolio: PortFollow — Personal DevOS (Powered by AWS Amplify)
+Contact:   rathodsudhakar.dev@gmail.com
+Location:  India
+
+--------------------------------------------------------------------------------
+PROFESSIONAL SUMMARY
+--------------------------------------------------------------------------------
+Dedicated Computer Science student and software developer with a strong foundation in
+full-stack development, distributed backend architectures, and web application security.
+Passionate about engineering reliable, scalable enterprise applications with Java,
+Spring Boot, Python, React, and TypeScript, backed by practical experience in network
+vulnerability assessment (OWASP Top 10) and cloud deployments.
+
+--------------------------------------------------------------------------------
+TECHNICAL SKILLS
+--------------------------------------------------------------------------------
+• Programming Languages: Java, Python, JavaScript, TypeScript, SQL
+• Frontend Frameworks:   React, HTML5, CSS3, Tailwind CSS, Responsive Design
+• Backend & APIs:        Spring Boot, Flask, Node.js, Express, RESTful APIs, Microservices
+• Databases:             MySQL, PostgreSQL, Supabase, Hibernate ORM
+• Cloud & DevOps:        AWS, AWS Amplify, Git, GitHub Actions, Linux / Bash
+• Cybersecurity Tools:   Nmap, OWASP Top 10, Web Vulnerability Assessment, Security Testing
+
+--------------------------------------------------------------------------------
+FEATURED PROJECTS
+--------------------------------------------------------------------------------
+1. CyberScan-Pro (Web Vulnerability & Security Scanner)
+   Technologies: Python, Flask, React, TypeScript, Supabase
+   - Developed an automated web vulnerability scanner detecting security misconfigurations,
+     missing HTTP headers (CSP, HSTS, X-Frame-Options), and SSL/TLS cipher expiry.
+   - Designed intuitive risk-weighted executive security reports and persistent scan histories.
+   - Repository: https://github.com/rathodsudhakar/cyberscan-pro
+
+2. Digital Blood Bank Management System
+   Technologies: Java, Spring Boot, Hibernate, MySQL, REST APIs
+   - Engineered an enterprise healthcare system managing blood stock inventories, donor
+     registration screening, and emergency patient compatibility matching algorithms.
+   - Implemented transactional integrity and RESTful endpoints for hospital dispatch orders.
+
+3. AI Text Summarizer
+   Technologies: JavaScript, Node.js, Express, Gemini API
+   - Built an interactive AI web application summarizing dense documents into key takeaways
+     and executive briefs with token reduction metrics.
+   - Handled proxy authentication, streaming responses, and prompt optimization.
+
+4. Fabrici (Smart Clothing E-Commerce Platform)
+   Technologies: React, JavaScript, HTML5, CSS3, REST APIs
+   - Designed a responsive shopping experience with live product filters, shopping cart
+     state management, and streamlined checkout simulation.
+
+--------------------------------------------------------------------------------
+EDUCATION
+--------------------------------------------------------------------------------
+Bachelor of Technology / Engineering in Computer Science
+- Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming,
+  Database Management Systems, Computer Networks, Operating Systems, Information Security.
+
+================================================================================
+Generated via PortFollow DevOS — Sudhakar Rathod
+================================================================================
