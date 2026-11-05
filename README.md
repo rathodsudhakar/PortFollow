@@ -18,13 +18,8 @@ PortFollow is an original, cinematic, interactive developer portfolio website en
 - **Mobile-Responsive Mode:** Automatically adapts to full-screen application cards on touchscreens without awkward window clipping or horizontal scrolling.
 - **Accessible & Keyboard Friendly:** Semantic elements and focus management.
 
-### 2. 🎨 3 Distinct System Themes (Instant Switching via CSS Custom Properties)
-- **Neon Terminal (Default):** Deep void backdrop (`#080C16`), cyan and cyber purple ambient glows, faint grid lines, and glowing terminal green outputs.
-- **Soft Pastel:** Refined modern lavender background (`#F8F5FF`), clean white window surfaces, and vibrant purple/pink highlights.
-- **Classic Desktop:** Authentic nostalgic teal wallpaper (`#008080`), 3D beveled silver frames (`#C0C0C0`), and high-contrast navy active titlebars.
-- **Persistent Storage:** Theme preference is automatically remembered using `localStorage`.
 
-### 3. 💻 Standout Creative Feature: Interactive Terminal (`terminal.exe`)
+### 2. 💻 Standout Creative Feature: Interactive Terminal (`terminal.exe`)
 An authentic command-line interface featuring:
 - Monospaced typography with blinking caret prompt (`sudhakar@devos:~$`).
 - Arrow-key command history (Up/Down navigation).
@@ -43,7 +38,7 @@ An authentic command-line interface featuring:
   - `date` — Print current system timestamp
   - `history` — List recently typed commands
 
-### 4. 📂 Core Desktop Applications
+### 3. 📂 Core Desktop Applications
 - **`about_me.exe`:** Developer biography, education in Computer Science, career aspirations, technical interests, current learning focus, and downloadable resume.
 - **`skills.sys`:** Categorized competencies (Programming Languages, Frontend, Backend, Databases, Cloud & Tools, Cybersecurity) with practical engineering usage notes and direct links to corresponding projects.
 - **`projects.folder`:** Showcase of verified projects with technical architecture, features, engineering challenges overcome, and verified GitHub links:
@@ -54,7 +49,7 @@ An authentic command-line interface featuring:
 - **`display_settings.exe`:** Visual theme selector showcasing miniature window previews with real-time palette feedback.
 - **`contact.exe`:** Communication terminal with direct channel links, one-click email copy with visual feedback, and a functional message composer that triggers the user's native email client.
 
-### 5. ⏱️ Functional Taskbar & Start Menu
+### 4. ⏱️ Functional Taskbar & Start Menu
 - Fixed bottom taskbar featuring the PortFollow brand badge.
 - Interactive Start Menu with quick-launch access to all six system applications.
 - Active window indicators supporting click-to-focus and click-to-minimize.
@@ -111,42 +106,6 @@ An authentic command-line interface featuring:
    ```bash
    npm run preview
    ```
-
----
-
-## ☁️ Deploying to AWS Amplify Hosting
-
-PortFollow is configured out of the box for continuous deployment with AWS Amplify.
-
-### Fast Track Deployment:
-1. Push your repository to GitHub.
-2. Sign in to the **AWS Management Console** and search for **AWS Amplify**.
-3. Select **Host a web app**, authorize GitHub, and select the `portfollow` repository.
-4. AWS Amplify will detect the `amplify.yml` file automatically:
-   ```yaml
-   version: 1
-   frontend:
-     phases:
-       preBuild:
-         commands:
-           - npm ci
-       build:
-         commands:
-           - npm run build
-     artifacts:
-       baseDirectory: dist
-       files:
-         - '**/*'
-     cache:
-       paths:
-         - node_modules/**/*
-   ```
-5. Click **Save and deploy**.
-6. Amplify automatically builds your application, deploys the static files to S3, configures CloudFront CDN, provisions an SSL certificate, and issues a live `amplifyapp.com` URL.
-
-For detailed architecture diagrams and custom domain configurations, see [docs/aws-architecture.md](./docs/aws-architecture.md).
-
----
 
 ## 📁 Project Structure
 
