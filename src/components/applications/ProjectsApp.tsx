@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { PROJECTS_DATA } from '../../data/projects';
-import type { ProjectItem } from '../../types';
 import { useWindowManager } from '../../context/WindowManagerContext';
 import { useTheme } from '../../context/ThemeContext';
 import { GithubIcon } from '../common/Icons';
@@ -30,27 +29,22 @@ export const ProjectsApp: React.FC = () => {
   const { windows } = useWindowManager();
   const { theme } = useTheme();
 
-  // Check if a specific project was requested via window payload
-  const initialProjectId = windows['projects']?.payload?.selectedProjectId;
+  // Handle selected project requested via window payload
+  const requestedProjectId = windows['projects']?.payload?.selectedProjectId;
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(requestedProjectId ?? null);
+  const [prevRequestedId, setPrevRequestedId] = useState<string | undefined>(requestedProjectId);
 
-  const [activeProject, setActiveProject] = useState<ProjectItem | null>(() => {
-    if (initialProjectId) {
-      return PROJECTS_DATA.find((p) => p.id === initialProjectId) || null;
-    }
-    return null;
-  });
+  // Sync state during render when payload changes (React recommended pattern)
+  if (requestedProjectId !== prevRequestedId) {
+    setPrevRequestedId(requestedProjectId);
+    setSelectedProjectId(requestedProjectId ?? null);
+  }
+
+  const activeProject = selectedProjectId
+    ? (PROJECTS_DATA.find((p) => p.id === selectedProjectId) ?? null)
+    : null;
 
   const [searchTerm, setSearchTerm] = useState('');
-
-  // Update if payload changes
-  useEffect(() => {
-    if (windows['projects']?.payload?.selectedProjectId) {
-      const match = PROJECTS_DATA.find(
-        (p) => p.id === windows['projects'].payload.selectedProjectId
-      );
-      if (match) setActiveProject(match);
-    }
-  }, [windows['projects']?.payload]);
 
   const filteredProjects = PROJECTS_DATA.filter((p) =>
     p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -64,7 +58,7 @@ export const ProjectsApp: React.FC = () => {
       <div className="flex items-center justify-between border-b pb-3 border-white/10 shrink-0">
         {activeProject ? (
           <button
-            onClick={() => setActiveProject(null)}
+            onClick={() => setSelectedProjectId(null)}
             className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
               theme === 'classic'
                 ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
@@ -343,7 +337,7 @@ export const ProjectsApp: React.FC = () => {
                   {/* Actions footer */}
                   <div className="flex items-center justify-between pt-4 mt-4 border-t border-white/10">
                     <button
-                      onClick={() => setActiveProject(project)}
+                      onClick={() => setSelectedProjectId(project.id)}
                       className={`text-xs font-mono font-medium underline underline-offset-4 flex items-center gap-1 ${
                         theme === 'classic'
                           ? 'text-blue-900 font-bold'
