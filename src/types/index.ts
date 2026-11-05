@@ -1,11 +1,12 @@
-export type ThemeId = 'neon' | 'classic';
 
-export type AppId = 
-  | 'about' 
-  | 'skills' 
-  | 'projects' 
-  | 'terminal' 
-  | 'settings' 
+export type ThemeId = 'neon' | 'pastel' | 'classic';
+
+export type AppId =
+  | 'about'
+  | 'skills'
+  | 'projects'
+  | 'terminal'
+  | 'settings'
   | 'contact';
 
 export interface WindowPosition {
@@ -35,12 +36,12 @@ export interface WindowState {
   payload?: any;
 }
 
-export type SkillCategory = 
-  | 'Programming Languages' 
-  | 'Frontend' 
-  | 'Backend' 
-  | 'Databases' 
-  | 'Cloud & Tools' 
+export type SkillCategory =
+  | 'Programming Languages'
+  | 'Frontend'
+  | 'Backend'
+  | 'Databases'
+  | 'Cloud & Tools'
   | 'Cybersecurity';
 
 export interface SkillItem {
