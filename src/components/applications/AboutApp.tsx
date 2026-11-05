@@ -28,10 +28,10 @@ export const AboutApp: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto pb-4">
+    <div className="space-y-4 max-w-4xl mx-auto pb-2">
       {/* Top Hero Banner */}
       <div
-        className={`p-6 rounded-xl border transition-all ${
+        className={`p-4 sm:p-5 rounded-xl border transition-all ${
           theme === 'classic'
             ? 'win98-box-inset bg-[#D4D0C8] text-black'
             : theme === 'pastel'
@@ -39,11 +39,11 @@ export const AboutApp: React.FC = () => {
             : 'bg-gradient-to-r from-[#1B2A41]/80 to-[#101827]/90 border-[#223552] shadow-neon-cyan/10'
         }`}
       >
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
           {/* Cyber Initials Avatar Badge */}
           <div className="relative group shrink-0">
             <div
-              className={`w-28 h-28 rounded-2xl flex flex-col items-center justify-center font-mono font-bold text-3xl shadow-lg border-2 ${
+              className={`w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex flex-col items-center justify-center font-mono font-bold text-2xl sm:text-3xl shadow-lg border-2 ${
                 theme === 'classic'
                   ? 'win98-box-outset bg-[#000080] text-white border-white'
                   : theme === 'pastel'
@@ -52,54 +52,43 @@ export const AboutApp: React.FC = () => {
               }`}
             >
               <span>SR</span>
-              <span className="text-[10px] tracking-widest mt-1 opacity-80 uppercase font-sans font-normal">
+              <span className="text-[9px] tracking-widest mt-0.5 opacity-80 uppercase font-sans font-normal">
                 DevOS // 01
               </span>
             </div>
-            <div className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1 bg-emerald-500 text-black shadow">
+            <div className="absolute -bottom-1.5 -right-1.5 px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider flex items-center gap-1 bg-emerald-500 text-black shadow">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               Online
             </div>
           </div>
 
           {/* Core Info */}
-          <div className="flex-1 text-center md:text-left space-y-2">
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-              <h1 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">
+          <div className="flex-1 text-center sm:text-left space-y-1.5">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+              <h1 className="text-xl sm:text-2xl font-heading font-bold tracking-tight">
                 Sudhakar Rathod
               </h1>
-              <span
-                className={`text-xs px-2.5 py-0.5 rounded-md font-mono border ${
-                  theme === 'classic'
-                    ? 'bg-[#C0C0C0] text-black border-black'
-                    : theme === 'pastel'
-                    ? 'bg-purple-100 text-purple-700 border-purple-200'
-                    : 'bg-[#00E5FF]/10 text-[#00E5FF] border-[#00E5FF]/30'
-                }`}
-              >
-                v2.6.0_STABLE
-              </span>
             </div>
 
             <p
-              className={`text-sm md:text-base font-medium ${
+              className={`text-xs sm:text-sm font-medium ${
                 theme === 'classic' ? 'text-blue-900 font-bold' : theme === 'pastel' ? 'text-purple-700' : 'text-[#39FF14]'
               }`}
             >
-              Computer Science Student | Software Developer | Cybersecurity Enthusiast
+              B.E - Information Technology | Software Developer | Cybersecurity Enthusiast
             </p>
 
-            <p className="text-xs md:text-sm leading-relaxed opacity-90 pt-1">
+            <p className="text-xs leading-relaxed opacity-90">
               Building resilient, type-safe full-stack software and cybersecurity tools. Focused on enterprise backend systems, intuitive frontends, and practical web vulnerability research.
             </p>
 
             {/* Quick action bar */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-2">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1.5">
               <a
                 href="https://github.com/rathodsudhakar"
                 target="_blank"
                 rel="noreferrer"
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   theme === 'classic'
                     ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
                     : theme === 'pastel'
@@ -109,14 +98,14 @@ export const AboutApp: React.FC = () => {
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 GitHub
-                <ExternalLink className="w-3 h-3 opacity-60" />
+                <ExternalLink className="w-2.5 h-2.5 opacity-60" />
               </a>
 
               <a
                 href="https://www.linkedin.com/in/rathodsudhakar/"
                 target="_blank"
                 rel="noreferrer"
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   theme === 'classic'
                     ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
                     : theme === 'pastel'
@@ -126,12 +115,12 @@ export const AboutApp: React.FC = () => {
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 LinkedIn
-                <ExternalLink className="w-3 h-3 opacity-60" />
+                <ExternalLink className="w-2.5 h-2.5 opacity-60" />
               </a>
 
               <button
                 onClick={handleDownloadResume}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
                   theme === 'classic'
                     ? 'win98-box-outset bg-[#000080] text-white hover:bg-blue-800'
                     : theme === 'pastel'
@@ -147,11 +136,11 @@ export const AboutApp: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid of details: Education, Career Goals, Technical Focus */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Grid of details: Education, Career Goals */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Education */}
         <div
-          className={`p-4 rounded-xl border ${
+          className={`p-3.5 sm:p-4 rounded-xl border ${
             theme === 'classic'
               ? 'win98-box-inset bg-[#D4D0C8]'
               : theme === 'pastel'
@@ -159,26 +148,26 @@ export const AboutApp: React.FC = () => {
               : 'bg-[#101827]/80 border-[#223552]'
           }`}
         >
-          <div className="flex items-center gap-2 mb-3">
-            <GraduationCap className="w-5 h-5 text-indigo-400" />
-            <h2 className="text-sm font-semibold tracking-wide uppercase font-mono">
-              Education & Academic Foundation
+          <div className="flex items-center gap-2 mb-2">
+            <GraduationCap className="w-4 h-4 text-indigo-400" />
+            <h2 className="text-xs font-semibold tracking-wide uppercase font-mono">
+              Education & Foundation
             </h2>
           </div>
-          <div className="space-y-2 text-xs md:text-sm">
-            <p className="font-semibold">Bachelor of Technology / Engineering in Computer Science</p>
-            <p className="opacity-80">
-              Rigorous coursework encompassing Data Structures & Algorithms, Object-Oriented Analysis & Design, Database Management Systems, Computer Networks, and Information Security.
+          <div className="space-y-1.5 text-xs">
+            <p className="font-semibold text-xs sm:text-sm">B.E - Information Technology</p>
+            <p className="opacity-80 leading-relaxed">
+              Coursework covering Data Structures & Algorithms, Object-Oriented Analysis, DBMS, Computer Networks, and Information Security.
             </p>
-            <div className="pt-2 flex flex-wrap gap-1.5">
-              <span className="px-2 py-0.5 rounded text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                Data Structures & Algorithms
+            <div className="pt-1 flex flex-wrap gap-1">
+              <span className="px-1.5 py-0.5 rounded text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                DSA
               </span>
-              <span className="px-2 py-0.5 rounded text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <span className="px-1.5 py-0.5 rounded text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 Operating Systems
               </span>
-              <span className="px-2 py-0.5 rounded text-[11px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                Computer Networks
+              <span className="px-1.5 py-0.5 rounded text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                Networks
               </span>
             </div>
           </div>
@@ -186,7 +175,7 @@ export const AboutApp: React.FC = () => {
 
         {/* Career Goals */}
         <div
-          className={`p-4 rounded-xl border ${
+          className={`p-3.5 sm:p-4 rounded-xl border ${
             theme === 'classic'
               ? 'win98-box-inset bg-[#D4D0C8]'
               : theme === 'pastel'
@@ -194,24 +183,24 @@ export const AboutApp: React.FC = () => {
               : 'bg-[#101827]/80 border-[#223552]'
           }`}
         >
-          <div className="flex items-center gap-2 mb-3">
-            <Compass className="w-5 h-5 text-emerald-400" />
-            <h2 className="text-sm font-semibold tracking-wide uppercase font-mono">
+          <div className="flex items-center gap-2 mb-2">
+            <Compass className="w-4 h-4 text-emerald-400" />
+            <h2 className="text-xs font-semibold tracking-wide uppercase font-mono">
               Career Trajectory & Goals
             </h2>
           </div>
-          <div className="space-y-2 text-xs md:text-sm">
-            <p className="font-semibold">Software Developer & Security Engineer</p>
-            <p className="opacity-80">
-              Aspiring to architect scalable enterprise services and fortified web ecosystems. Dedicated to bridging the gap between innovative software product features and uncompromising application security defense.
+          <div className="space-y-1.5 text-xs">
+            <p className="font-semibold text-xs sm:text-sm">Software Developer & Security Engineer</p>
+            <p className="opacity-80 leading-relaxed">
+              Dedicated to bridging innovative software product features with uncompromising web vulnerability defense.
             </p>
-            <ul className="space-y-1 pt-1 opacity-90 text-xs">
+            <ul className="space-y-1 pt-0.5 opacity-90 text-[11px]">
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
                 <span>Designing distributed, resilient backend architectures</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
                 <span>Implementing automated DevSecOps and vulnerability scans</span>
               </li>
             </ul>
@@ -221,7 +210,7 @@ export const AboutApp: React.FC = () => {
 
       {/* Technical Interests & Current Learning Focus */}
       <div
-        className={`p-4 rounded-xl border ${
+        className={`p-3.5 sm:p-4 rounded-xl border ${
           theme === 'classic'
             ? 'win98-box-inset bg-[#D4D0C8]'
             : theme === 'pastel'
@@ -229,41 +218,41 @@ export const AboutApp: React.FC = () => {
             : 'bg-[#101827]/80 border-[#223552]'
         }`}
       >
-        <div className="flex items-center gap-2 mb-3">
-          <ShieldCheck className="w-5 h-5 text-cyan-400" />
-          <h2 className="text-sm font-semibold tracking-wide uppercase font-mono">
-            Technical Interests & Current Learning Focus
+        <div className="flex items-center gap-2 mb-2">
+          <ShieldCheck className="w-4 h-4 text-cyan-400" />
+          <h2 className="text-xs font-semibold tracking-wide uppercase font-mono">
+            Technical Interests & Focus
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <div>
-            <h3 className="font-semibold mb-1 text-xs uppercase tracking-wider text-cyan-400">
+            <h3 className="font-semibold mb-1 text-[11px] uppercase tracking-wider text-cyan-400">
               Primary Technical Interests
             </h3>
             <p className="opacity-80 leading-relaxed">
-              Full-Stack Engineering (React, Spring Boot, Flask, Node.js), Applied Cryptography, Web Application Penetration Testing (OWASP Top 10), and Cloud Infrastructure deployment with AWS.
+              Full-Stack Engineering (React, Spring Boot, Flask, Node.js), Applied Cryptography, Web Penetration Testing (OWASP Top 10), and Cloud deployments with AWS.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-1 text-xs uppercase tracking-wider text-purple-400">
-              Active Focus & Ongoing Exploration
+            <h3 className="font-semibold mb-1 text-[11px] uppercase tracking-wider text-purple-400">
+              Active Focus & Exploration
             </h3>
             <p className="opacity-80 leading-relaxed">
-              Diving deeper into automated security scanning pipelines, advanced vulnerability heuristics, LLM application engineering with Google Gemini API, and high-performance concurrency models.
+              Automated security scanning pipelines, advanced vulnerability heuristics, LLM application engineering with Gemini API, and high-performance concurrency models.
             </p>
           </div>
         </div>
       </div>
 
       {/* Quick Launch Buttons to Other Apps */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <span className="text-xs opacity-75 font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/10">
+        <span className="text-[11px] opacity-75 font-mono">
           Explore deeper modules within DevOS:
         </span>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-1.5">
           <button
             onClick={() => openWindow('skills')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
               theme === 'classic'
                 ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
                 : theme === 'pastel'
@@ -271,12 +260,12 @@ export const AboutApp: React.FC = () => {
                 : 'bg-[#1B2A41] hover:bg-[#223552] text-[#00E5FF] border border-[#223552]'
             }`}
           >
-            Open Skills.sys
-            <ArrowRight className="w-3.5 h-3.5" />
+            Skills.sys
+            <ArrowRight className="w-3 h-3" />
           </button>
           <button
             onClick={() => openWindow('projects')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
               theme === 'classic'
                 ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
                 : theme === 'pastel'
@@ -284,12 +273,12 @@ export const AboutApp: React.FC = () => {
                 : 'bg-[#1B2A41] hover:bg-[#223552] text-[#FF2E93] border border-[#223552]'
             }`}
           >
-            Open Projects.folder
-            <ArrowRight className="w-3.5 h-3.5" />
+            Projects.folder
+            <ArrowRight className="w-3 h-3" />
           </button>
           <button
             onClick={() => openWindow('terminal')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
               theme === 'classic'
                 ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
                 : theme === 'pastel'
@@ -297,8 +286,8 @@ export const AboutApp: React.FC = () => {
                 : 'bg-[#1B2A41] hover:bg-[#223552] text-[#39FF14] border border-[#223552]'
             }`}
           >
-            <Terminal className="w-3.5 h-3.5" />
-            Launch Terminal
+            <Terminal className="w-3 h-3" />
+            Terminal
           </button>
         </div>
       </div>

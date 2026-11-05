@@ -16,72 +16,108 @@ interface WindowManagerContextType {
   isMobile: boolean;
 }
 
-const DEFAULT_WINDOWS: Record<AppId, Omit<WindowState, 'zIndex'>> = {
+// Calculate responsive, laptop-friendly default bounds
+const calculateOptimalBounds = (
+  appId: AppId,
+  preferredWidth?: number,
+  preferredHeight?: number
+): { position: WindowPosition; size: WindowDimensions } => {
+  const isClient = typeof window !== 'undefined';
+  const vw = isClient ? window.innerWidth : 1200;
+  const vh = isClient ? window.innerHeight : 800;
+  const taskbarHeight = 48;
+  const usableHeight = Math.max(280, vh - taskbarHeight);
+
+  // Maximum allowed dimensions on laptop displays (with safety margins)
+  const maxSafeWidth = Math.max(300, Math.floor(vw * 0.90));
+  const maxSafeHeight = Math.max(240, Math.floor(usableHeight * 0.88));
+
+  // Compact, laptop-optimized target sizes
+  const defaultAppSizes: Record<AppId, { width: number; height: number }> = {
+    about: { width: 700, height: 490 },
+    skills: { width: 720, height: 500 },
+    projects: { width: 740, height: 510 },
+    terminal: { width: 500, height: 320 },
+    settings: { width: 620, height: 450 },
+    contact: { width: 560, height: 470 },
+  };
+
+  const baseSize = defaultAppSizes[appId] || { width: 640, height: 460 };
+  const targetW = preferredWidth || baseSize.width;
+  const targetH = preferredHeight || baseSize.height;
+
+  // Clamp sizes to screen boundaries
+  const width = Math.min(targetW, maxSafeWidth);
+  const height = Math.min(targetH, maxSafeHeight);
+
+  // Stagger sequence so multiple open windows cascade nicely without falling off screen
+  const staggerOrder: Record<AppId, number> = {
+    about: 0,
+    skills: 1,
+    projects: 2,
+    terminal: 1,
+    settings: 2,
+    contact: 1,
+  };
+  const step = staggerOrder[appId] ?? 0;
+  const staggerX = step * 22;
+  const staggerY = step * 18;
+
+  let posX: number;
+  let posY: number;
+
+  const leftMarginForDesktopIcons = 230;
+  if (vw >= width + leftMarginForDesktopIcons + 30) {
+    // There is room beside the 2 columns of desktop icons!
+    posX = leftMarginForDesktopIcons + 15 + staggerX;
+  } else {
+    // Center horizontally on smaller laptop screens
+    posX = Math.floor((vw - width) / 2) + (staggerX % 30);
+  }
+
+  // Center vertically in usable screen area with slight cascade
+  posY = Math.max(12, Math.floor((usableHeight - height) / 2) + staggerY - 10);
+
+  // Strict viewport boundary clamping
+  const clampedX = Math.max(8, Math.min(posX, Math.max(8, vw - width - 8)));
+  const clampedY = Math.max(8, Math.min(posY, Math.max(8, usableHeight - height - 8)));
+
+  return {
+    position: { x: clampedX, y: clampedY },
+    size: { width, height },
+  };
+};
+
+const DEFAULT_WINDOWS_CONFIG: Record<AppId, { title: string; iconName: string; minSize: WindowDimensions }> = {
   about: {
-    id: 'about',
     title: 'about_me.exe',
     iconName: 'User',
-    isOpen: true, // Default open on load
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 48, y: 32 },
-    size: { width: 780, height: 580 },
-    minSize: { width: 340, height: 420 },
+    minSize: { width: 320, height: 380 },
   },
   skills: {
-    id: 'skills',
     title: 'skills.sys',
     iconName: 'Cpu',
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 120, y: 40 },
-    size: { width: 840, height: 600 },
-    minSize: { width: 340, height: 420 },
+    minSize: { width: 320, height: 380 },
   },
   projects: {
-    id: 'projects',
     title: 'projects.folder',
     iconName: 'FolderGit2',
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 180, y: 50 },
-    size: { width: 880, height: 620 },
-    minSize: { width: 340, height: 420 },
+    minSize: { width: 320, height: 380 },
   },
   terminal: {
-    id: 'terminal',
     title: 'terminal.exe',
     iconName: 'Terminal',
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 220, y: 70 },
-    size: { width: 760, height: 500 },
-    minSize: { width: 340, height: 320 },
+    minSize: { width: 280, height: 200 },
   },
   settings: {
-    id: 'settings',
     title: 'display_settings.exe',
     iconName: 'Sliders',
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 260, y: 80 },
-    size: { width: 680, height: 520 },
-    minSize: { width: 320, height: 380 },
+    minSize: { width: 300, height: 340 },
   },
   contact: {
-    id: 'contact',
     title: 'contact.exe',
     iconName: 'Send',
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    position: { x: 200, y: 90 },
-    size: { width: 640, height: 540 },
-    minSize: { width: 320, height: 380 },
+    minSize: { width: 300, height: 340 },
   },
 };
 
@@ -100,20 +136,62 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
   const [windows, setWindows] = useState<Record<AppId, WindowState>>(() => {
     const initial: Record<string, WindowState> = {};
     let z = 10;
-    (Object.keys(DEFAULT_WINDOWS) as AppId[]).forEach((id) => {
+    (Object.keys(DEFAULT_WINDOWS_CONFIG) as AppId[]).forEach((id) => {
+      const bounds = calculateOptimalBounds(id);
       initial[id] = {
-        ...DEFAULT_WINDOWS[id],
+        id,
+        title: DEFAULT_WINDOWS_CONFIG[id].title,
+        iconName: DEFAULT_WINDOWS_CONFIG[id].iconName,
+        isOpen: id === 'about', // Open About Me by default
+        isMinimized: false,
+        isMaximized: false,
+        position: bounds.position,
+        size: bounds.size,
+        minSize: DEFAULT_WINDOWS_CONFIG[id].minSize,
         zIndex: id === 'about' ? ++z : 5,
       };
     });
     return initial as Record<AppId, WindowState>;
   });
 
-  // Track responsive resize
+  // Track responsive resize & clamp open windows within laptop viewport
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+
+      if (!mobile) {
+        setWindows((prev) => {
+          const updated: Record<string, WindowState> = { ...prev };
+          const taskbarH = 48;
+          const usableH = window.innerHeight - taskbarH;
+
+          (Object.keys(prev) as AppId[]).forEach((id) => {
+            const w = prev[id];
+            if (w.isOpen && !w.isMaximized) {
+              const maxW = Math.max(300, Math.floor(window.innerWidth * 0.92));
+              const maxH = Math.max(240, Math.floor(usableH * 0.90));
+              const newW = Math.min(w.size.width, maxW);
+              const newH = Math.min(w.size.height, maxH);
+
+              const maxX = Math.max(8, window.innerWidth - newW - 8);
+              const maxY = Math.max(8, usableH - newH - 8);
+
+              updated[id] = {
+                ...w,
+                size: { width: newW, height: newH },
+                position: {
+                  x: Math.max(8, Math.min(w.position.x, maxX)),
+                  y: Math.max(8, Math.min(w.position.y, maxY)),
+                },
+              };
+            }
+          });
+          return updated as Record<AppId, WindowState>;
+        });
+      }
     };
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -137,10 +215,9 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     setWindows((prevWindows) => {
       const highestZ = Math.max(...Object.values(prevWindows).map((w) => w.zIndex), 10);
       const current = prevWindows[id];
-      const currentX = current.position.x;
-      const currentY = current.position.y;
-      const maxX = typeof window !== 'undefined' ? Math.max(10, window.innerWidth - current.size.width - 20) : currentX;
-      const maxY = typeof window !== 'undefined' ? Math.max(10, window.innerHeight - current.size.height - 60) : currentY;
+
+      // Recompute optimal laptop bounds when opening
+      const freshBounds = calculateOptimalBounds(id, current.size.width, current.size.height);
 
       return {
         ...prevWindows,
@@ -149,10 +226,8 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
           isOpen: true,
           isMinimized: false,
           zIndex: highestZ + 1,
-          position: {
-            x: Math.min(Math.max(20, currentX), maxX),
-            y: Math.min(Math.max(20, currentY), maxY),
-          },
+          position: freshBounds.position,
+          size: freshBounds.size,
           payload: payload ?? current.payload,
         },
       };
@@ -221,13 +296,14 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
   const restoreWindow = useCallback((id: AppId) => {
     setWindows((prev) => {
       const w = prev[id];
+      const fallbackBounds = calculateOptimalBounds(id);
       return {
         ...prev,
         [id]: {
           ...w,
           isMaximized: false,
-          position: w.prevBounds ? { x: w.prevBounds.x, y: w.prevBounds.y } : w.position,
-          size: w.prevBounds ? { width: w.prevBounds.width, height: w.prevBounds.height } : w.size,
+          position: w.prevBounds ? { x: w.prevBounds.x, y: w.prevBounds.y } : fallbackBounds.position,
+          size: w.prevBounds ? { width: w.prevBounds.width, height: w.prevBounds.height } : fallbackBounds.size,
         },
       };
     });

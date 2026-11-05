@@ -39,16 +39,24 @@ export const TerminalApp: React.FC = () => {
   const [historyPointer, setHistoryPointer] = useState<number>(-1);
   const [commandList, setCommandList] = useState<string[]>([]);
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Scroll to bottom of terminal output safely without affecting the main window/desktop
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
-  // Keep input focused when clicking inside terminal
+  // Safely focus input on mount without scrolling the viewport
+  useEffect(() => {
+    inputRef.current?.focus({ preventScroll: true });
+  }, []);
+
+  // Keep input focused when clicking inside terminal without causing viewport scroll
   const handleTerminalClick = () => {
-    inputRef.current?.focus();
+    inputRef.current?.focus({ preventScroll: true });
   };
 
   const executeCommand = (cmdText: string) => {
@@ -83,7 +91,7 @@ export const TerminalApp: React.FC = () => {
               <div><span className="text-emerald-400 font-bold">contact</span> : Open Contact console</div>
               <div><span className="text-emerald-400 font-bold">github</span> : Navigate to GitHub profile</div>
               <div><span className="text-emerald-400 font-bold">linkedin</span> : Open LinkedIn profile</div>
-              <div><span className="text-emerald-400 font-bold">theme &lt;name&gt;</span> : Switch (neon|pastel|classic)</div>
+              <div><span className="text-emerald-400 font-bold">theme &lt;name&gt;</span> : Switch (neon|classic)</div>
               <div><span className="text-emerald-400 font-bold">ls</span> : List portfolio applications</div>
               <div><span className="text-emerald-400 font-bold">whoami</span> : Print developer credentials</div>
               <div><span className="text-emerald-400 font-bold">clear</span> : Flush terminal screen</div>
@@ -137,7 +145,7 @@ export const TerminalApp: React.FC = () => {
           <div className="text-xs space-y-1 font-mono">
             <p className="text-cyan-400 font-bold">Sudhakar Rathod</p>
             <p className="text-slate-300">
-              Role: Computer Science Student | Software Developer | Cybersecurity Enthusiast
+              Role: B.E - Information Technology | Software Developer | Cybersecurity Enthusiast
             </p>
             <p className="text-emerald-400">Status: Active & open to engineering opportunities</p>
           </div>
@@ -162,7 +170,7 @@ export const TerminalApp: React.FC = () => {
         return;
 
       case 'theme':
-        if (arg === 'neon' || arg === 'pastel' || arg === 'classic') {
+        if (arg === 'neon' || arg === 'classic') {
           setTheme(arg);
           outputResult = (
             <span className="text-emerald-400">
@@ -173,7 +181,7 @@ export const TerminalApp: React.FC = () => {
           isError = true;
           outputResult = (
             <span className="text-rose-400">
-              Invalid theme "{arg}". Choose from: neon, pastel, classic. Example: `theme neon`
+              Invalid theme "{arg}". Choose from: neon, classic. Example: `theme classic`
             </span>
           );
         }
@@ -248,22 +256,24 @@ export const TerminalApp: React.FC = () => {
   return (
     <div
       onClick={handleTerminalClick}
-      className="flex flex-col h-full font-mono text-xs md:text-sm bg-[#080C16] text-[#39FF14] p-3 rounded-lg border border-[#223552] overflow-hidden cursor-text selection:bg-[#00E5FF] selection:text-[#080C16]"
+      className="flex flex-col h-full font-mono text-xs bg-[#080C16] text-[#39FF14] p-3 overflow-hidden cursor-text selection:bg-[#00E5FF] selection:text-[#080C16]"
     >
       {/* Scrollable history output */}
-      <div className="flex-1 overflow-y-auto space-y-2.5 pr-1">
+      <div
+        ref={scrollContainerRef}
+        className="flex-1 min-h-0 overflow-y-auto space-y-2 pr-1"
+      >
         {history.map((item) => (
           <div key={item.id} className="space-y-1">
             {item.command && (
               <div className="flex items-center gap-2 text-slate-300">
-                <span className="text-cyan-400 font-bold">sudhakar@devos:~$</span>
-                <span className="text-white">{item.command}</span>
+                <span className="text-cyan-400 font-bold shrink-0">sudhakar@devos:~$</span>
+                <span className="text-white break-all">{item.command}</span>
               </div>
             )}
             {item.result && <div className="pl-2">{item.result}</div>}
           </div>
         ))}
-        <div ref={terminalEndRef} />
       </div>
 
       {/* Interactive Command Input Line */}
@@ -275,11 +285,10 @@ export const TerminalApp: React.FC = () => {
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
           onKeyDown={handleKeyDown}
-          autoFocus
           spellCheck={false}
           autoComplete="off"
           aria-label="Terminal command prompt"
-          className="flex-1 bg-transparent text-[#39FF14] outline-none font-mono caret-[#39FF14] text-xs md:text-sm"
+          className="flex-1 bg-transparent text-[#39FF14] outline-none font-mono caret-[#39FF14] text-xs"
         />
       </div>
     </div>

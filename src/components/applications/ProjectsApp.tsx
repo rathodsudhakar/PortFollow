@@ -15,10 +15,12 @@ import {
   Lock,
   HeartPulse,
   Bot,
-  ShoppingBag
+  ShoppingBag,
+  Monitor
 } from 'lucide-react';
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
+  'Interactive Desktop Portfolio': Monitor,
   'Web Security Scanner': Lock,
   'Healthcare Management System': HeartPulse,
   'AI Application': Bot,

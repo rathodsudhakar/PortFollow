@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DesktopWallpaper } from './DesktopWallpaper';
 import { DesktopIcons } from './DesktopIcons';
 import { WindowFrame } from '../window-manager/WindowFrame';
@@ -11,9 +11,21 @@ import { ContactApp } from '../applications/ContactApp';
 import { Taskbar } from '../taskbar/Taskbar';
 
 export const DesktopWorkspace: React.FC = () => {
+  // Prevent browser viewport from scrolling or shifting
+  useEffect(() => {
+    const lockScroll = () => {
+      if (window.scrollX !== 0 || window.scrollY !== 0) {
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('scroll', lockScroll);
+    lockScroll();
+    return () => window.removeEventListener('scroll', lockScroll);
+  }, []);
+
   return (
     <main
-      className="relative w-screen h-screen overflow-hidden select-none"
+      className="fixed inset-0 w-screen h-screen overflow-hidden select-none"
       role="main"
       aria-label="PortFollow DevOS Workspace"
     >

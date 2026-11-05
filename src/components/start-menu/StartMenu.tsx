@@ -60,8 +60,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
       className={`fixed bottom-12 left-2 z-50 w-80 md:w-96 rounded-xl overflow-hidden shadow-2xl border transition-all animate-fadeIn ${
         theme === 'classic'
           ? 'win98-box-outset bg-[#C0C0C0] text-black font-sans'
-          : theme === 'pastel'
-          ? 'bg-white/95 backdrop-blur-md text-gray-800 border-purple-200 shadow-purple-300/30'
           : 'bg-[#101827]/95 backdrop-blur-md text-slate-100 border-[#223552] shadow-neon-cyan/20'
       }`}
     >
@@ -70,8 +68,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
         className={`p-4 border-b flex items-center justify-between ${
           theme === 'classic'
             ? 'bg-[#000080] text-white'
-            : theme === 'pastel'
-            ? 'bg-purple-600 text-white'
             : 'bg-[#1B2A41] text-[#00E5FF] border-[#223552]'
         }`}
       >
@@ -80,8 +76,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
             className={`w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm ${
               theme === 'classic'
                 ? 'bg-white text-blue-900'
-                : theme === 'pastel'
-                ? 'bg-white text-purple-600'
                 : 'bg-[#080C16] text-[#00E5FF] border border-[#00E5FF]/40'
             }`}
           >
@@ -113,8 +107,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#00E5FF] text-slate-200'
           }`}
         >
@@ -130,8 +122,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#39FF14] text-slate-200'
           }`}
         >
@@ -147,8 +137,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#8B5CF6] text-slate-200'
           }`}
         >
@@ -164,8 +152,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#00E5FF] text-slate-200'
           }`}
         >
@@ -181,8 +167,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#FFC857] text-slate-200'
           }`}
         >
@@ -198,8 +182,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({ isOpen, onClose }) => {
           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-mono text-left transition-colors ${
             theme === 'classic'
               ? 'hover:bg-[#000080] hover:text-white'
-              : theme === 'pastel'
-              ? 'hover:bg-purple-100 text-gray-800'
               : 'hover:bg-[#1B2A41] hover:text-[#FF2E93] text-slate-200'
           }`}
         >

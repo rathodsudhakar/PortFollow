@@ -13,8 +13,6 @@ export const SettingsApp: React.FC = () => {
           className={`p-2.5 rounded-lg shrink-0 ${
             theme === 'classic'
               ? 'win98-box-outset bg-[#000080] text-white'
-              : theme === 'pastel'
-              ? 'bg-purple-100 text-purple-700'
               : 'bg-[#1B2A41] text-[#00E5FF] border border-[#223552]'
           }`}
         >
@@ -29,7 +27,7 @@ export const SettingsApp: React.FC = () => {
       </div>
 
       {/* Theme Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {availableThemes.map((item) => {
           const isSelected = theme === item.id;
 
@@ -48,13 +46,9 @@ export const SettingsApp: React.FC = () => {
                 isSelected
                   ? theme === 'classic'
                     ? 'win98-box-inset bg-[#000080] text-white'
-                    : theme === 'pastel'
-                    ? 'bg-purple-50 border-purple-500 shadow-md ring-2 ring-purple-500/30'
                     : 'bg-[#162238] border-[#00E5FF] shadow-neon-cyan/20 ring-1 ring-[#00E5FF]'
                   : theme === 'classic'
                   ? 'win98-box-outset bg-[#D4D0C8] text-black hover:bg-white'
-                  : theme === 'pastel'
-                  ? 'bg-white border-gray-200 hover:border-purple-300'
                   : 'bg-[#101827]/80 border-[#223552] hover:border-slate-500'
               }`}
             >
@@ -150,8 +144,6 @@ export const SettingsApp: React.FC = () => {
         className={`p-3 rounded-lg border text-xs font-mono ${
           theme === 'classic'
             ? 'win98-box-inset bg-[#D4D0C8] text-black'
-            : theme === 'pastel'
-            ? 'bg-purple-50 text-gray-700 border-purple-200'
             : 'bg-[#101827] text-slate-400 border-[#223552]'
         }`}
       >

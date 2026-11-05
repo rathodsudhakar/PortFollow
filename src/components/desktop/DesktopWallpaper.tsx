@@ -6,32 +6,7 @@ export const DesktopWallpaper: React.FC = () => {
 
   if (theme === 'classic') {
     return (
-      <div className="absolute inset-0 bg-[#008080] pointer-events-none select-none z-0 overflow-hidden">
-        {/* Retro subtle 90s dither/matrix watermark */}
-        <div className="absolute bottom-16 right-8 text-right opacity-25 font-sans text-xs text-white">
-          <div className="font-bold tracking-widest text-sm">PortFollow DevOS 98</div>
-          <div>Personal Computer Edition</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (theme === 'pastel') {
-    return (
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F8F5FF] via-[#F3EDFD] to-[#FFF0F6] pointer-events-none select-none z-0 overflow-hidden">
-        {/* Soft atmospheric pastel orbs */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-purple-300/30 blur-3xl" />
-        <div className="absolute top-1/2 -right-32 w-96 h-96 rounded-full bg-pink-300/25 blur-3xl" />
-        <div className="absolute -bottom-20 left-1/3 w-80 h-80 rounded-full bg-indigo-200/30 blur-3xl" />
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(#8B5CF6 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
-          }}
-        />
-      </div>
+      <div className="absolute inset-0 bg-[#008080] pointer-events-none select-none z-0 overflow-hidden" />
     );
   }
 
@@ -72,12 +47,6 @@ export const DesktopWallpaper: React.FC = () => {
       <div className="absolute inset-0 bg-radial-vignette pointer-events-none" style={{
         background: 'radial-gradient(ellipse at center, transparent 40%, rgba(8, 12, 22, 0.75) 100%)'
       }} />
-
-      {/* Watermark brand detail */}
-      <div className="absolute bottom-16 right-8 text-right opacity-20 font-mono text-xs text-slate-400">
-        <div className="font-bold text-sm tracking-wider text-[#00E5FF]">PORTFOLLOW DEVOS</div>
-        <div>SUDHAKAR RATHOD // v2.6.0</div>
-      </div>
     </div>
   );
 };

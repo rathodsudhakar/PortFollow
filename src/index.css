@@ -51,30 +51,6 @@
   --window-border-width: 1px;
 }
 
-[data-theme="pastel"] {
-  --color-desktop-bg: #F8F5FF;
-  --color-window-bg: #FFFFFF;
-  --color-card-bg: #F3F0FA;
-  --color-border: #E5E7EB;
-  --color-accent-primary: #8B5CF6;
-  --color-accent-secondary: #F472B6;
-  --color-accent-purple: #7C3AED;
-  --color-accent-magenta: #EC4899;
-  --color-terminal-green: #10B981;
-  --color-accent-gold: #F59E0B;
-  --color-text-main: #1F2937;
-  --color-text-muted: #6B7280;
-  --color-taskbar-bg: rgba(255, 255, 255, 0.92);
-  --color-titlebar-active: #8B5CF6;
-  --color-titlebar-active-text: #FFFFFF;
-  --color-titlebar-inactive: #EDE9FE;
-  --color-titlebar-inactive-text: #6B7280;
-  --color-btn-surface: #EDE9FE;
-  --window-shadow: 0 20px 45px -10px rgba(139, 92, 246, 0.2), 0 0 0 1px rgba(139, 92, 246, 0.12);
-  --window-radius: 12px;
-  --window-border-width: 1px;
-}
-
 [data-theme="classic"] {
   --color-desktop-bg: #008080;
   --color-window-bg: #C0C0C0;

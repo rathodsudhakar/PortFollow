@@ -75,8 +75,10 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
     const deltaY = e.clientY - dragStartRef.current.startY;
 
     const taskbarHeight = 48;
-    const maxX = Math.max(0, window.innerWidth - windowState.size.width);
-    const maxY = Math.max(0, window.innerHeight - windowState.size.height - taskbarHeight);
+    const currentW = Math.min(windowState.size.width, window.innerWidth - 16);
+    const currentH = Math.min(windowState.size.height, window.innerHeight - taskbarHeight - 16);
+    const maxX = Math.max(0, window.innerWidth - currentW);
+    const maxY = Math.max(0, window.innerHeight - currentH - taskbarHeight);
 
     const newX = Math.min(Math.max(0, dragStartRef.current.initPosX + deltaX), maxX);
     const newY = Math.min(Math.max(0, dragStartRef.current.initPosY + deltaY), maxY);
@@ -112,7 +114,7 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
 
   const IconComponent = ICON_MAP[windowState.iconName] || Terminal;
 
-  // Window styling calculations
+  // Window styling calculations with strict laptop boundaries
   const style: React.CSSProperties = isMobile
     ? {
         position: 'fixed',
@@ -137,6 +139,8 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
         top: `${windowState.position.y}px`,
         width: `${windowState.size.width}px`,
         height: `${windowState.size.height}px`,
+        maxWidth: 'calc(100vw - 16px)',
+        maxHeight: 'calc(100vh - 56px)',
         zIndex: windowState.zIndex,
       };
 
@@ -148,13 +152,11 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
       aria-label={windowState.title}
       aria-modal="false"
       onPointerDown={() => bringToFront(id)}
-      className={`flex flex-col overflow-hidden transition-shadow duration-150 ${
+      className={`flex flex-col overflow-hidden transition-shadow duration-150 max-w-[calc(100vw-16px)] max-h-[calc(100vh-56px)] ${
         isDragging ? 'window-dragging select-none opacity-95' : ''
       } ${
         theme === 'classic'
           ? 'win98-box-outset bg-[#C0C0C0] text-black font-sans'
-          : theme === 'pastel'
-          ? 'bg-white text-gray-800 rounded-xl shadow-xl border border-purple-100'
           : 'bg-[#101827]/95 backdrop-blur-md text-slate-100 rounded-xl border border-[#223552] shadow-os-window'
       }`}
     >
@@ -164,15 +166,11 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onDoubleClick={() => !isMobile && toggleMaximize(id)}
-        className={`flex items-center justify-between px-3 py-2 cursor-grab active:cursor-grabbing select-none border-b transition-colors duration-150 ${
+        className={`flex items-center justify-between px-3 py-2 cursor-grab active:cursor-grabbing select-none border-b shrink-0 transition-colors duration-150 ${
           theme === 'classic'
             ? isActive
               ? 'bg-[#000080] text-white font-bold text-sm tracking-wide'
               : 'bg-[#808080] text-[#C0C0C0] font-bold text-sm tracking-wide'
-            : theme === 'pastel'
-            ? isActive
-              ? 'bg-purple-600 text-white font-medium border-purple-200'
-              : 'bg-purple-50 text-gray-600 border-purple-100'
             : isActive
             ? 'bg-[#1B2A41] text-[#00E5FF] border-[#223552]'
             : 'bg-[#0D1424] text-slate-400 border-slate-800'
@@ -184,8 +182,6 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
             className={`w-4 h-4 shrink-0 ${
               theme === 'classic'
                 ? 'text-white'
-                : theme === 'pastel'
-                ? isActive ? 'text-white' : 'text-purple-600'
                 : isActive ? 'text-[#00E5FF]' : 'text-slate-400'
             }`}
           />
@@ -208,8 +204,6 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
             className={`flex items-center justify-center p-1 rounded transition-colors ${
               theme === 'classic'
                 ? 'w-5 h-5 bg-[#D4D0C8] text-black win98-box-outset active:win98-box-inset font-bold text-xs leading-none'
-                : theme === 'pastel'
-                ? 'w-6 h-6 hover:bg-black/10 active:bg-black/20 text-current'
                 : 'w-6 h-6 hover:bg-[#1E293B] hover:text-[#00E5FF] text-slate-300 active:bg-[#00E5FF]/20'
             }`}
           >
@@ -225,8 +219,6 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
               className={`flex items-center justify-center p-1 rounded transition-colors ${
                 theme === 'classic'
                   ? 'w-5 h-5 bg-[#D4D0C8] text-black win98-box-outset active:win98-box-inset font-bold text-xs leading-none'
-                  : theme === 'pastel'
-                  ? 'w-6 h-6 hover:bg-black/10 active:bg-black/20 text-current'
                   : 'w-6 h-6 hover:bg-[#1E293B] hover:text-[#00E5FF] text-slate-300 active:bg-[#00E5FF]/20'
               }`}
             >
@@ -246,8 +238,6 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
             className={`flex items-center justify-center p-1 rounded transition-colors ${
               theme === 'classic'
                 ? 'w-5 h-5 bg-[#D4D0C8] text-black win98-box-outset active:win98-box-inset font-bold text-xs leading-none hover:bg-red-600 hover:text-white'
-                : theme === 'pastel'
-                ? 'w-6 h-6 hover:bg-rose-500 hover:text-white text-current'
                 : 'w-6 h-6 hover:bg-[#FF2E93] hover:text-white text-slate-300'
             }`}
           >
@@ -258,12 +248,12 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({ id, children }) => {
 
       {/* Window Body Container */}
       <div
-        className={`flex-1 overflow-y-auto overflow-x-hidden ${
-          theme === 'classic'
-            ? 'p-2 bg-[#C0C0C0]'
-            : theme === 'pastel'
-            ? 'p-4 bg-white'
-            : 'p-4 bg-[#101827]/90 text-slate-100'
+        className={`flex-1 min-h-0 flex flex-col ${
+          id === 'terminal'
+            ? 'p-0 overflow-hidden bg-[#080C16]'
+            : theme === 'classic'
+            ? 'p-2 bg-[#C0C0C0] overflow-y-auto overflow-x-hidden'
+            : 'p-3 sm:p-4 bg-[#101827]/90 text-slate-100 overflow-y-auto overflow-x-hidden'
         }`}
       >
         {children}

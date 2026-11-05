@@ -18,7 +18,7 @@ export const ContactApp: React.FC = () => {
   const [message, setMessage] = useState('');
   const [copiedDraft, setCopiedDraft] = useState(false);
 
-  const developerEmail = 'rathodsudhakar.dev@gmail.com';
+  const developerEmail = 'rathodsudhakar7821@gmail.com';
 
   const handleCopyEmail = async () => {
     try {
@@ -135,7 +135,6 @@ export const ContactApp: React.FC = () => {
               <Download className="w-4 h-4 text-emerald-400" />
               Curriculum Vitae
             </span>
-            <span className="text-[10px] font-mono opacity-50">v2.6.0</span>
           </div>
           <button
             onClick={handleDownloadResume}

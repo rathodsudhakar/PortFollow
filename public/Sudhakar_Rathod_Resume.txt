@@ -1,64 +1,64 @@
 ================================================================================
                               SUDHAKAR RATHOD
-           Computer Science Student | Software Developer | Cybersecurity Enthusiast
+           B.E - Information Technology | Software Developer | Cybersecurity
 ================================================================================
 GitHub:    https://github.com/rathodsudhakar
 Portfolio: PortFollow — Personal DevOS (Powered by AWS Amplify)
-Contact:   rathodsudhakar.dev@gmail.com
+Contact:   rathodsudhakar7821@gmail.com
 Location:  India
 
 --------------------------------------------------------------------------------
 PROFESSIONAL SUMMARY
 --------------------------------------------------------------------------------
-Dedicated Computer Science student and software developer with a strong foundation in
-full-stack development, distributed backend architectures, and web application security.
-Passionate about engineering reliable, scalable enterprise applications with Java,
-Spring Boot, Python, React, and TypeScript, backed by practical experience in network
-vulnerability assessment (OWASP Top 10) and cloud deployments.
+Dedicated Information Technology graduate and software developer with a strong
+foundation in full-stack engineering, distributed backends, and web security.
+Experienced in building scalable applications with React, TypeScript, Java,
+Spring Boot, Python, and AWS.
 
 --------------------------------------------------------------------------------
 TECHNICAL SKILLS
 --------------------------------------------------------------------------------
 • Programming Languages: Java, Python, JavaScript, TypeScript, SQL
 • Frontend Frameworks:   React, HTML5, CSS3, Tailwind CSS, Responsive Design
-• Backend & APIs:        Spring Boot, Flask, Node.js, Express, RESTful APIs, Microservices
+• Backend & APIs:        Spring Boot, Flask, Node.js, Express, RESTful APIs
 • Databases:             MySQL, PostgreSQL, Supabase, Hibernate ORM
 • Cloud & DevOps:        AWS, AWS Amplify, Git, GitHub Actions, Linux / Bash
-• Cybersecurity Tools:   Nmap, OWASP Top 10, Web Vulnerability Assessment, Security Testing
+• Cybersecurity Tools:   OWASP Top 10, Web Vulnerability Assessment, Security Diagnostics
 
 --------------------------------------------------------------------------------
 FEATURED PROJECTS
 --------------------------------------------------------------------------------
-1. CyberScan-Pro (Web Vulnerability & Security Scanner)
+1. PortFollow — Personal DevOS Portfolio
+   Technologies: React, TypeScript, Tailwind CSS, AWS Amplify
+   - Interactive Windows-style desktop portfolio featuring draggable windows,
+     an interactive command-line terminal, and 3-way instant theme switching.
+   - Deployed on AWS Amplify with global CloudFront CDN edge delivery.
+
+2. CyberScan-Pro (Web Vulnerability & Security Scanner)
    Technologies: Python, Flask, React, TypeScript, Supabase
-   - Developed an automated web vulnerability scanner detecting security misconfigurations,
-     missing HTTP headers (CSP, HSTS, X-Frame-Options), and SSL/TLS cipher expiry.
-   - Designed intuitive risk-weighted executive security reports and persistent scan histories.
-   - Repository: https://github.com/rathodsudhakar/cyberscan-pro
+   - Automated web vulnerability scanner inspecting security headers (CSP, HSTS)
+     and detecting common web misconfigurations with actionable remediation.
 
-2. Digital Blood Bank Management System
+3. Digital Blood Bank Management System
    Technologies: Java, Spring Boot, Hibernate, MySQL, REST APIs
-   - Engineered an enterprise healthcare system managing blood stock inventories, donor
-     registration screening, and emergency patient compatibility matching algorithms.
-   - Implemented transactional integrity and RESTful endpoints for hospital dispatch orders.
+   - Healthcare management platform with donor registration screening, blood inventory
+     tracking, and transactional emergency hospital requisition workflows.
 
-3. AI Text Summarizer
+4. AI Text Summarizer
    Technologies: JavaScript, Node.js, Express, Gemini API
-   - Built an interactive AI web application summarizing dense documents into key takeaways
-     and executive briefs with token reduction metrics.
-   - Handled proxy authentication, streaming responses, and prompt optimization.
+   - Web application distilling dense articles and documents into concise briefs
+     with real-time token reduction metrics and copy actions.
 
-4. Fabrici (Smart Clothing E-Commerce Platform)
+5. Fabrici (Smart Clothing E-Commerce Platform)
    Technologies: React, JavaScript, HTML5, CSS3, REST APIs
-   - Designed a responsive shopping experience with live product filters, shopping cart
-     state management, and streamlined checkout simulation.
+   - Responsive shopping experience with live catalog filters and cart state flow.
 
 --------------------------------------------------------------------------------
 EDUCATION
 --------------------------------------------------------------------------------
-Bachelor of Technology / Engineering in Computer Science
-- Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming,
-  Database Management Systems, Computer Networks, Operating Systems, Information Security.
+B.E - Information Technology
+- Relevant Coursework: Data Structures & Algorithms, Object-Oriented Analysis,
+  Database Management Systems, Computer Networks, Operating Systems, Web Security.
 
 ================================================================================
 Generated via PortFollow DevOS — Sudhakar Rathod

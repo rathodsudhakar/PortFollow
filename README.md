@@ -2,7 +2,7 @@
 
 > **Product Name:** PortFollow  
 > **Tagline:** Your Personal DevOS  
-> **Owner:** Sudhakar Rathod (Computer Science Student | Software Developer | Cybersecurity Enthusiast)  
+> **Owner:** Sudhakar Rathod (B.E - Information Technology | Software Developer | Cybersecurity Enthusiast)  
 > **Target Cloud Platform:** AWS Amplify Hosting  
 
 PortFollow is an original, cinematic, interactive developer portfolio website engineered as a futuristic desktop operating system with nostalgic Windows 98-inspired window mechanics. Visitors navigate a living digital workspace where applications open in movable, resizable, and focusable windows to showcase technical skills, software engineering projects, cybersecurity diagnostics, and contact channels.
@@ -203,10 +203,10 @@ portfollow/
 ## 👤 Developer Profile
 
 **Sudhakar Rathod**  
-- **Role:** Computer Science Student | Software Developer | Cybersecurity Enthusiast  
+- **Role:** B.E - Information Technology | Software Developer | Cybersecurity Enthusiast  
 - **GitHub:** [@rathodsudhakar](https://github.com/rathodsudhakar)  
 - **LinkedIn:** [Sudhakar Rathod](https://www.linkedin.com/in/rathodsudhakar/)  
-- **Email:** `rathodsudhakar.dev@gmail.com`  
+- **Email:** `rathodsudhakar7821@gmail.com`  
 
 ---
 

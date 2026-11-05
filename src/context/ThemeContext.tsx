@@ -15,12 +15,6 @@ const AVAILABLE_THEMES: { id: ThemeId; name: string; description: string; colors
     colors: ['#080C16', '#101827', '#00E5FF', '#8B5CF6', '#39FF14'],
   },
   {
-    id: 'pastel',
-    name: 'Soft Pastel',
-    description: 'Clean modern lavender and white surfaces with soft violet and rose highlights.',
-    colors: ['#F8F5FF', '#FFFFFF', '#8B5CF6', '#F472B6', '#1F2937'],
-  },
-  {
     id: 'classic',
     name: 'Classic Desktop',
     description: 'Authentic 90s teal desktop, silver beveled frames, and high-contrast navy headers.',
@@ -34,7 +28,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [theme, setThemeState] = useState<ThemeId>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('portfollow-theme') as ThemeId;
-      if (saved && (saved === 'neon' || saved === 'pastel' || saved === 'classic')) {
+      if (saved && (saved === 'neon' || saved === 'classic')) {
         return saved;
       }
     }
@@ -55,7 +49,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     if (metaTheme) {
       if (theme === 'neon') metaTheme.setAttribute('content', '#080C16');
-      else if (theme === 'pastel') metaTheme.setAttribute('content', '#F8F5FF');
       else if (theme === 'classic') metaTheme.setAttribute('content', '#008080');
     }
   }, [theme]);

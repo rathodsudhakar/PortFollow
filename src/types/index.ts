@@ -1,4 +1,4 @@
-export type ThemeId = 'neon' | 'pastel' | 'classic';
+export type ThemeId = 'neon' | 'classic';
 
 export type AppId = 
   | 'about' 
